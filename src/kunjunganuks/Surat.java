@@ -16,7 +16,6 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.UnitValue;
 
 import java.io.IOException;
 
@@ -33,19 +32,17 @@ import static kunjunganuks.KunjunganUks.scanner;
 import static kunjunganuks.Kunjungan.isMenuCariKunjungan;
 import static kunjunganuks.Kunjungan.isMenuEditKunjungan;
 import static kunjunganuks.Kunjungan.isMenuHapusKunjungan;
-import static kunjunganuks.KunjunganUks.kunjungan;
 import static kunjunganuks.KunjunganUks.menuUtama;
-import static kunjunganuks.KunjunganUks.rekap;
 import static kunjunganuks.KunjunganUks.suratPulang;
 import static kunjunganuks.KunjunganUks.suratRujukan;
-
-
+import static kunjunganuks.Rekap.rekapKunjunganPerMinggu;
 
 /*
 TODO :
-1. Mengatur width tabel rekap jadi 100% / full - SOLVED
-2. Mengatur nama menu surat rujukan & pulang menjadi surat & rekap - SOLVED
-3. Mengatur tanggal yang tampil pada rekap menjadi (misalnya : 01 Januari 2025) - SOLVED
+1. Menambah fitur rekap data kunjungan dengan kustom periode
+2. Mengatur width tabel rekap jadi 100% / full - SOLVED
+3. Mengatur nama menu surat rujukan & pulang menjadi surat & rekap - SOLVED
+4. Mengatur tanggal yang tampil pada rekap menjadi (misalnya : 01 Januari 2025) - SOLVED
 */
 
 /**
@@ -64,7 +61,7 @@ public class Surat {
 
     public static void menuSurat() {
         System.out.println("\n============================================");
-        System.out.println("=            MENU - MENU SURAT          =");
+        System.out.println("=         MENU - MENU SURAT & REKAP        =");
         System.out.println("============================================");
         System.out.println("1. Surat Rujukan");
         System.out.println("2. Surat Pulang");
@@ -76,7 +73,7 @@ public class Surat {
         isMenuSurat = true;
         while (isMenuSurat) {
             try {
-                System.out.print("Pilihan menu (1-4) : "); // TODO : BENERIN LOOP INI
+                System.out.print("Pilihan menu (1-4) : ");
                 int pilihan = scanner.nextInt();
 
                 switch (pilihan) {
@@ -164,7 +161,7 @@ public class Surat {
                     boolean isFound = false;
                     for (List<String> dataHasil : dataSuratRujukan) {
                         if (dataHasil.get(0).equals(id)) {
-                            if (dataHasil.get(9).equals("ya")) {
+                            if (dataHasil.get(10).equals("ya")) {
                                 data = dataHasil;
                                 idCheck = false;
                                 isFound = true;
@@ -199,15 +196,16 @@ public class Surat {
             boolean cetak = true;
             while (cetak) {
                 System.out.println("============================================");
-                System.out.println("ID            : " + data.get(0));
-                System.out.println("Nama          : " + data.get(1));
-                System.out.println("Kelas         : " + data.get(2));
-                System.out.println("Keluhan       : " + data.get(3));
-                System.out.println("Tindakan      : " + data.get(4));
-                System.out.println("Obat          : " + data.get(5));
-                System.out.println("Tanggal Masuk : " + data.get(6));
-                System.out.println("Waktu Masuk   : " + data.get(7));
-                System.out.println("Waktu Keluar  : " + data.get(8));
+                System.out.println("ID               : " + data.get(0));
+                System.out.println("Nama             : " + data.get(1));
+                System.out.println("Kelas            : " + data.get(2));
+                System.out.println("Keluhan          : " + data.get(3));
+                System.out.println("Tindakan         : " + data.get(4));
+                System.out.println("Obat             : " + data.get(5));
+                System.out.println("Jumlah digunakan : " + data.get(5));
+                System.out.println("Tanggal Masuk    : " + data.get(6));
+                System.out.println("Waktu Masuk      : " + data.get(7));
+                System.out.println("Waktu Keluar     : " + data.get(8));
                 System.out.println("============================================");
 
                 String namaInstansi = "";
@@ -364,7 +362,7 @@ public class Surat {
                     boolean isFound = false;
                     for (List<String> dataHasil : dataSuratPulang) {
                         if (dataHasil.get(0).equals(id)) {
-                            if (dataHasil.get(10).equals("ya")) {
+                            if (dataHasil.get(11).equals("ya")) {
                                 data = dataHasil;
                                 idCheck = false;
                                 isFound = true;
@@ -399,15 +397,16 @@ public class Surat {
             boolean cetak = true;
             while (cetak) {
                 System.out.println("============================================");
-                System.out.println("ID            : " + data.get(0));
-                System.out.println("Nama          : " + data.get(1));
-                System.out.println("Kelas         : " + data.get(2));
-                System.out.println("Keluhan       : " + data.get(3));
-                System.out.println("Tindakan      : " + data.get(4));
-                System.out.println("Obat          : " + data.get(5));
-                System.out.println("Tanggal Masuk : " + data.get(6));
-                System.out.println("Waktu Masuk   : " + data.get(7));
-                System.out.println("Waktu Keluar  : " + data.get(8));
+                System.out.println("ID               : " + data.get(0));
+                System.out.println("Nama             : " + data.get(1));
+                System.out.println("Kelas            : " + data.get(2));
+                System.out.println("Keluhan          : " + data.get(3));
+                System.out.println("Tindakan         : " + data.get(4));
+                System.out.println("Obat             : " + data.get(5));
+                System.out.println("Jumlah digunakan : " + data.get(6));
+                System.out.println("Tanggal Masuk    : " + data.get(7));
+                System.out.println("Waktu Masuk      : " + data.get(8));
+                System.out.println("Waktu Keluar     : " + data.get(9));
                 System.out.println("============================================");
 
                 String tanggalDibuat = getCurrentDate();
@@ -523,12 +522,13 @@ public class Surat {
     }
 
     public static void rekap() {
-        
+        System.out.println("\n============================================");
+        System.out.println("=              REKAP KUNJUNGAN             =");
+        System.out.println("============================================");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat dateFormatNew = new SimpleDateFormat("dd MMMM yyyy");
         
         while (true) {
-            System.out.println("============================================");
             System.out.print("Masukkan tanggal awal (yyyy-mm-dd) : ");
             tanggalAwal = scanner.nextLine();
 
@@ -562,97 +562,5 @@ public class Surat {
         rekapKunjunganPerMinggu(tanggalAwal, tanggalAkhir);
     }
 
-    public static void rekapKunjunganPerMinggu(String tanggalAwal, String tanggalAkhir) {
-        for (List<String> kunjunganData : kunjungan) {
-            String tanggal = kunjunganData.get(6);
-            if (isTanggalInRange(tanggal, tanggalAwal, tanggalAkhir)) {
-                rekap.add(kunjunganData);
-            }
-        }
-        
-        if (rekap.size() > 0) {
-            System.out.println("============================================");
-            System.out.println("Membuat rekap data...");
-            buatRekap(rekap);
-        } else {
-            System.out.println("============================================");
-            System.out.println("Data kunjungan pada periode tersebut kosong");
-            System.out.println("============================================");
-            menuSurat();
-        }
-    }
-
-    // Fungsi untuk memeriksa apakah tanggal dalam rentang yang diberikan
-    public static boolean isTanggalInRange(String tanggal, String tanggalAwal, String tanggalAkhir) {
-        return tanggal.compareTo(tanggalAwal) >= 0 && tanggal.compareTo(tanggalAkhir) <= 0;
-    }
-
-    public static void buatRekap(List<List<String>> dataRekap) {
-        boolean periode = true;
-        while (periode) {
-            try {
-                String fileName = "Kunjungan UKS (" + startDate + " - " + endDate + ").pdf";
-                // Membuat PdfWriter dan PdfDocument
-                PdfWriter writer = new PdfWriter("C:\\Rekap_Data_Kunjungan_UKS\\" + fileName);
-                PdfDocument pdf = new PdfDocument(writer);
-
-                // Membuat dokumen layout untuk menambahkan elemen
-                Document document = new Document(pdf);
-
-                // Membuat font dengan menangani IOException
-                PdfFont font = PdfFontFactory.createFont();  // font default
-
-                // Judul PDF
-                document.add(new Paragraph("Rekap Kunjungan UKS")
-                        .setFont(font)
-                        .setTextAlignment(TextAlignment.CENTER)
-                        .setFontSize(18));
-
-                document.add(new Paragraph("\nPeriode : " + startDate + " s.d. " + endDate + "\n\n")
-                        .setTextAlignment(TextAlignment.LEFT)
-                        .setFont(font)
-                        .setFontSize(12));
-
-                // Membuat tabel untuk data kunjungan
-                Table table = new Table(7);
-                
-                table.addHeaderCell("No");
-                table.addHeaderCell("Nama Siswa");
-                table.addHeaderCell("Kelas");
-                table.addHeaderCell("Keluhan");
-                table.addHeaderCell("Tanggal Masuk");
-                table.addHeaderCell("Dirujuk");
-                table.addHeaderCell("Pulang");
-
-                int nomor = 1;
-                // Menambahkan data ke dalam tabel
-                for (List<String> kunjunganData : dataRekap) {
-                    table.addCell(Integer.toString(nomor) + "."); // Nomor
-                    table.addCell(kunjunganData.get(1)); // Nama Siswa
-                    table.addCell(kunjunganData.get(2)); // Kelas
-                    table.addCell(kunjunganData.get(3)); // Keluhan
-                    table.addCell(kunjunganData.get(6)); // Tanggal Masuk
-                    table.addCell(kunjunganData.get(9).toUpperCase()); // Dirujuk
-                    table.addCell(kunjunganData.get(10).toUpperCase()); // Pulang
-                    nomor++;
-                }
-                
-                table.setWidth(UnitValue.createPercentValue(100));
-
-                // Menambahkan tabel tanda tangan ke dokumen
-                document.add(table); // Menutup dokumen PDF
-                document.close();
-
-                periode = false;
-                System.out.println("============================================");
-                System.out.println("Rekap data Berhasil dibuat");
-                System.out.println("============================================");
-                System.out.println("Lokasi file : C:\\Rekap_Data_Kunjungan_UKS\\" + fileName);
-                menuSurat();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        scanner.nextLine();
-    }
+    
 }

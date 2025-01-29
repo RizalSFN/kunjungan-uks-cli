@@ -26,7 +26,7 @@ import static kunjunganuks.KunjunganUks.scanner;
  * @author RIZAL
  */
 public class Kunjungan {
-    
+
     static boolean isMenuKunjungan = true;
     static boolean isMenuTambahKunjungan = true;
     static boolean isMenuEditKunjungan = false;
@@ -35,7 +35,7 @@ public class Kunjungan {
     static boolean isMenuHapusKunjungan = false;
     static boolean rujukanStatus = true;
     static boolean pulangStatus = true;
-    
+
     public static void menuKunjunganUks() {
         System.out.println("\n============================================");
         System.out.println("=         MENU - MENU KUNJUNGAN UKS        =");
@@ -130,17 +130,18 @@ public class Kunjungan {
                 List<String> data = kunjungan.get(i);
 
                 System.out.println("Data Kunjungan ke-" + (i + 1));
-                System.out.println("ID            : " + data.get(0));
-                System.out.println("Nama          : " + data.get(1));
-                System.out.println("Kelas         : " + data.get(2));
-                System.out.println("Keluhan       : " + data.get(3));
-                System.out.println("Tindakan      : " + data.get(4));
-                System.out.println("Obat          : " + data.get(5));
-                System.out.println("Tanggal Masuk : " + data.get(6));
-                System.out.println("Waktu Masuk   : " + data.get(7));
-                System.out.println("Waktu Keluar  : " + data.get(8));
-                System.out.println("Dirujuk       : " + data.get(9));
-                System.out.println("Pulang        : " + data.get(10));
+                System.out.println("ID               : " + data.get(0));
+                System.out.println("Nama             : " + data.get(1));
+                System.out.println("Kelas            : " + data.get(2));
+                System.out.println("Keluhan          : " + data.get(3));
+                System.out.println("Tindakan         : " + data.get(4));
+                System.out.println("Obat             : " + data.get(5));
+                System.out.println("Jumlah digunakan : " + data.get(6));
+                System.out.println("Tanggal Masuk    : " + data.get(7));
+                System.out.println("Waktu Masuk      : " + data.get(8));
+                System.out.println("Waktu Keluar     : " + data.get(9));
+                System.out.println("Dirujuk          : " + data.get(10));
+                System.out.println("Pulang           : " + data.get(11));
 
                 System.out.println("============================================");
             }
@@ -183,6 +184,9 @@ public class Kunjungan {
             System.out.print("Obat : ");
             String obat = scanner.nextLine();
 
+            System.out.print("Jumlah digunakan : ");
+            String jumlah = scanner.nextLine();
+
             System.out.println("Tanggal Masuk : " + getCurrentDate());
             String tanggal_masuk = getCurrentDate();
 
@@ -193,7 +197,7 @@ public class Kunjungan {
             String isRujukan = "-";
             String isPulang = "-";
 
-            kunjungan.add(Arrays.asList(id, nama, kelas, keluhan, tindakan, obat, tanggal_masuk, waktu_masuk,
+            kunjungan.add(Arrays.asList(id, nama, kelas, keluhan, tindakan, obat, jumlah, tanggal_masuk, waktu_masuk,
                     waktu_keluar, isRujukan, isPulang));
             System.out.println("============================================");
             System.out.println("Kunjungan baru berhasil ditambahkan");
@@ -263,7 +267,7 @@ public class Kunjungan {
                     switch (selesai.toLowerCase()) {
                         case "ya":
                             System.out.println("============================================");
-                            data.set(8, getCurrentTime());
+                            data.set(9, getCurrentTime());
 
                             String isRujukan = "";
                             rujukanStatus = true;
@@ -310,8 +314,8 @@ public class Kunjungan {
                                 }
                             }
 
-                            data.set(9, isRujukan);
-                            data.set(10, isPulang);
+                            data.set(10, isRujukan);
+                            data.set(11, isPulang);
                             System.out.println("============================================");
                             System.out.println("Kunjungan berhasil diselesaikan");
                             System.out.println("============================================");
@@ -364,11 +368,12 @@ public class Kunjungan {
                         System.out.println("Keluhan       : " + dataCari.get(3));
                         System.out.println("Tindakan      : " + dataCari.get(4));
                         System.out.println("Obat          : " + dataCari.get(5));
-                        System.out.println("Tanggal Masuk : " + dataCari.get(6));
-                        System.out.println("Waktu Masuk   : " + dataCari.get(7));
-                        System.out.println("Waktu Keluar  : " + dataCari.get(8));
-                        System.out.println("Dirujuk       : " + dataCari.get(9));
-                        System.out.println("Pulang        : " + dataCari.get(10));
+                        System.out.println("Banyaknya     : " + dataCari.get(6));
+                        System.out.println("Tanggal Masuk : " + dataCari.get(7));
+                        System.out.println("Waktu Masuk   : " + dataCari.get(8));
+                        System.out.println("Waktu Keluar  : " + dataCari.get(9));
+                        System.out.println("Dirujuk       : " + dataCari.get(10));
+                        System.out.println("Pulang        : " + dataCari.get(11));
 
                         System.out.println("============================================");
                     }
@@ -471,17 +476,18 @@ public class Kunjungan {
                 boolean ubahData = true;
                 while (ubahData) {
                     System.out.println("============================================");
-                    System.out.println("ID            : " + data.get(0));
-                    System.out.println("Nama          : " + data.get(1));
-                    System.out.println("Kelas         : " + data.get(2));
-                    System.out.println("Keluhan       : " + data.get(3));
-                    System.out.println("Tindakan      : " + data.get(4));
-                    System.out.println("Obat          : " + data.get(5));
-                    System.out.println("Tanggal Masuk : " + data.get(6));
-                    System.out.println("Waktu Masuk   : " + data.get(7));
-                    System.out.println("Waktu Keluar  : " + data.get(8));
-                    System.out.println("Dirujuk       : " + data.get(9));
-                    System.out.println("Pulang        : " + data.get(10));
+                    System.out.println("ID               : " + data.get(0));
+                    System.out.println("Nama             : " + data.get(1));
+                    System.out.println("Kelas            : " + data.get(2));
+                    System.out.println("Keluhan          : " + data.get(3));
+                    System.out.println("Tindakan         : " + data.get(4));
+                    System.out.println("Obat             : " + data.get(5));
+                    System.out.println("Jumlah digunakan : " + data.get(6));
+                    System.out.println("Tanggal Masuk    : " + data.get(7));
+                    System.out.println("Waktu Masuk      : " + data.get(8));
+                    System.out.println("Waktu Keluar     : " + data.get(9));
+                    System.out.println("Dirujuk          : " + data.get(10));
+                    System.out.println("Pulang           : " + data.get(11));
                     System.out.println("============================================");
                     System.out.println("1. Nama");
                     System.out.println("2. Kelas");
@@ -536,15 +542,61 @@ public class Kunjungan {
                                         inputCheck = false;
                                         break;
                                     case 5:
-                                        index = 5;
-                                        System.out.print("Masukkan obat baru : ");
-                                        newData = scanner.nextLine();
+                                        boolean obat = true;
+                                        while (obat) {
+                                            System.out.print("Ingin mengubah nama obat? (ya/tidak) : ");
+                                            String namaObat = scanner.nextLine();
+
+                                            switch (namaObat.toLowerCase()) {
+                                                case "ya":
+                                                    index = 5;
+                                                    System.out.print("Masukkan nama obat baru : ");
+                                                    newData = scanner.nextLine();
+                                                    obat = false;
+                                                    break;
+                                                case "tidak":
+                                                    boolean penggunaanObat = true;
+                                                    while (penggunaanObat) {
+                                                        System.out.print("Ingin mengubah jumlah penggunaan obat? (ya/tidak) : ");
+                                                        String jumlahPenggunaan = scanner.nextLine();
+
+                                                        switch (jumlahPenggunaan.toLowerCase()) {
+                                                            case "ya":
+                                                                index = 6;
+                                                                System.out.print("Masukkan jumlah penggunaan obat baru : ");
+                                                                newData = scanner.nextLine();
+                                                                penggunaanObat = false;
+                                                                obat = false;
+                                                                break;
+                                                            case "tidak":
+                                                                penggunaanObat = false;
+                                                                obat = false;
+                                                                scanner.nextLine();
+                                                                break;
+                                                            default:
+                                                                System.out.println("============================================");
+                                                                System.out.println(
+                                                                        "Masukkan pilihan yang valid, pilih ya atau tidak");
+                                                                System.out.println("============================================");
+                                                                break;
+                                                        }
+                                                    }
+                                                    obat = false;
+                                                    break;
+                                                default:
+                                                    System.out.println("============================================");
+                                                    System.out.println(
+                                                            "Masukkan pilihan yang valid, pilih ya atau tidak");
+                                                    System.out.println("============================================");
+                                                    break;
+                                            }
+                                        }
 
                                         ubahData = false;
                                         inputCheck = false;
                                         break;
                                     case 6:
-                                        index = 9;
+                                        index = 10;
                                         System.out.println("Masukkan status rujukan baru");
                                         rujukanStatus = true;
                                         while (rujukanStatus) {
@@ -573,7 +625,7 @@ public class Kunjungan {
                                         inputCheck = false;
                                         break;
                                     case 7:
-                                        index = 10;
+                                        index = 11;
                                         System.out.print("Masukkan status pulang baru");
                                         pulangStatus = true;
                                         while (pulangStatus) {
@@ -720,17 +772,18 @@ public class Kunjungan {
 
                     if (data != null) {
                         System.out.println("============================================");
-                        System.out.println("ID            : " + data.get(0));
-                        System.out.println("Nama          : " + data.get(1));
-                        System.out.println("Kelas         : " + data.get(2));
-                        System.out.println("Keluhan       : " + data.get(3));
-                        System.out.println("Tindakan      : " + data.get(4));
-                        System.out.println("Obat          : " + data.get(5));
-                        System.out.println("Tanggal Masuk : " + data.get(6));
-                        System.out.println("Waktu Masuk   : " + data.get(7));
-                        System.out.println("Waktu Keluar  : " + data.get(8));
-                        System.out.println("Dirujuk       : " + data.get(9));
-                        System.out.println("Pulang        : " + data.get(10));
+                        System.out.println("ID               : " + data.get(0));
+                        System.out.println("Nama             : " + data.get(1));
+                        System.out.println("Kelas            : " + data.get(2));
+                        System.out.println("Keluhan          : " + data.get(3));
+                        System.out.println("Tindakan         : " + data.get(4));
+                        System.out.println("Obat             : " + data.get(5));
+                        System.out.println("Jumlah digunakan : " + data.get(6));
+                        System.out.println("Tanggal Masuk    : " + data.get(7));
+                        System.out.println("Waktu Masuk      : " + data.get(8));
+                        System.out.println("Waktu Keluar     : " + data.get(9));
+                        System.out.println("Dirujuk          : " + data.get(10));
+                        System.out.println("Pulang           : " + data.get(11));
                         System.out.println("============================================");
 
                         System.out.print("Apakah anda yakin ingin menghapus data ini? (ya/tidak) : ");

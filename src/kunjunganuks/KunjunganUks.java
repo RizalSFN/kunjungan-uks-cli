@@ -13,6 +13,8 @@ import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.TimeZone;
+import static kunjunganuks.Kunjungan.menuKunjunganUks;
+import static kunjunganuks.Surat.menuSurat;
 
 /**
  *
@@ -96,33 +98,33 @@ public class KunjunganUks {
         System.out.println("=            MENU - MENU UTAMA             =");
         System.out.println("============================================");
         System.out.println("1. Kunjungan UKS");
-        System.out.println("2. Obat UKS");
-        System.out.println("3. Surat & Rekap");
-        System.out.println("4. Logout");
+        System.out.println("2. Surat & Rekap");
+        System.out.println("3. Logout");
+        System.out.println("4. Keluar dari program");
         System.out.println("============================================");
 
         while (isMenuUtama) {
             try {
-                System.out.print("Pilihan menu (1-4) : ");
+                System.out.print("Pilihan menu (1-3) : ");
                 int pilihan = scanner.nextInt();
 
                 switch (pilihan) {
                     case 1:
-                        Kunjungan.menuKunjunganUks();
+                        menuKunjunganUks();
                         break;
                     case 2:
-                        Obat.menuObatUks();
+                        menuSurat();
                         break;
                     case 3:
-                        Surat.menuSurat();
-                        break;
-                    case 4:
                         isLogin = false;
                         System.out.println("============================================");
                         System.out.println("Logout berhasil!");
                         System.out.println("============================================");
                         scanner.nextLine();
                         index();
+                        break;
+                    case 4:
+                        System.exit(0);
                         break;
                     default:
                         System.out.println("============================================");
