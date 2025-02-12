@@ -39,7 +39,7 @@ import static kunjunganuks.Rekap.rekapKunjunganPerMinggu;
 
 /*
 TODO :
-1. Menambah fitur rekap data kunjungan dengan kustom periode
+1. Menambah fitur rekap data kunjungan dengan kustom periode - SOLVED
 2. Mengatur width tabel rekap jadi 100% / full - SOLVED
 3. Mengatur nama menu surat rujukan & pulang menjadi surat & rekap - SOLVED
 4. Mengatur tanggal yang tampil pada rekap menjadi (misalnya : 01 Januari 2025) - SOLVED
@@ -202,10 +202,10 @@ public class Surat {
                 System.out.println("Keluhan          : " + data.get(3));
                 System.out.println("Tindakan         : " + data.get(4));
                 System.out.println("Obat             : " + data.get(5));
-                System.out.println("Jumlah digunakan : " + data.get(5));
-                System.out.println("Tanggal Masuk    : " + data.get(6));
-                System.out.println("Waktu Masuk      : " + data.get(7));
-                System.out.println("Waktu Keluar     : " + data.get(8));
+                System.out.println("Jumlah digunakan : " + data.get(6));
+                System.out.println("Tanggal Masuk    : " + data.get(7));
+                System.out.println("Waktu Masuk      : " + data.get(8));
+                System.out.println("Waktu Keluar     : " + data.get(9));
                 System.out.println("============================================");
 
                 String namaInstansi = "";
@@ -539,7 +539,7 @@ public class Surat {
                 break;
             } catch (Exception e) {
                 System.out.println("============================================");
-                System.out.println("Tanggal tidak valid, pastikan formatnya yyyy-mm-dd.");
+                System.out.println("Tanggal tidak valid, pastikan formatnya tahun-bulan-tanggal.");
             }
         }
         

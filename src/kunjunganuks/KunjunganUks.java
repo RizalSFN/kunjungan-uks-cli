@@ -29,7 +29,6 @@ public class KunjunganUks {
     static boolean isMenuUtama = true;
 
     static ArrayList<List<String>> kunjungan = new ArrayList<>();
-    static ArrayList<List<String>> dataObat = new ArrayList<>();
     static List<String> suratRujukan = new ArrayList<>();
     static List<String> suratPulang = new ArrayList<>();
     static ArrayList<List<String>> rekap = new ArrayList<>();
@@ -55,7 +54,7 @@ public class KunjunganUks {
     public static String getCurrentDate() {
         TimeZone timeZone = TimeZone.getTimeZone("Asia/Jakarta");
 
-        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
 
         Calendar cal = Calendar.getInstance(timeZone);
         dateFormat.setTimeZone(cal.getTimeZone());
@@ -105,7 +104,7 @@ public class KunjunganUks {
 
         while (isMenuUtama) {
             try {
-                System.out.print("Pilihan menu (1-3) : ");
+                System.out.print("Pilihan menu (1-4) : ");
                 int pilihan = scanner.nextInt();
 
                 switch (pilihan) {

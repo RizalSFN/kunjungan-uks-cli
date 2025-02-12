@@ -626,7 +626,7 @@ public class Kunjungan {
                                         break;
                                     case 7:
                                         index = 11;
-                                        System.out.print("Masukkan status pulang baru");
+                                        System.out.println("Masukkan status pulang baru");
                                         pulangStatus = true;
                                         while (pulangStatus) {
                                             System.out.print("Apakah pasien akan pulang? (ya/tidak) : ");
